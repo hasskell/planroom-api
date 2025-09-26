@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
