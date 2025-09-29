@@ -9,6 +9,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+          hmac-secret: "${JWT_SECRET:dev-secret}"
+          access-ttl: 30m
 management:
   endpoints:
     web:
