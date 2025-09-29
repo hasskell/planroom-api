@@ -1,4 +1,4 @@
-package com.planroomapi;
+package com.planroom;
 
 import org.junit.jupiter.api.Test;
 
