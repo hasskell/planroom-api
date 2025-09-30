@@ -7,8 +7,9 @@ import lombok.NonNull;
  * @param value sessions id as string
  */
 public record SessionId(@NonNull String value) {
+    private static final String PREFIX = "ses_";
     public SessionId {
-        if (value.isBlank() || !value.startsWith("ses_")) {
+        if (value.isBlank() || !value.startsWith(PREFIX)) {
             throw new IllegalArgumentException("Session id cannot be blank and shout start with prefix ses_");
         }
     }

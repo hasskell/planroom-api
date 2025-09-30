@@ -7,9 +7,9 @@ import lombok.NonNull;
  * @param value userid as string
  */
 public record UserId(@NonNull String value) {
-
+    private static final String PREFIX = "usr_";
     public UserId {
-        if (value.isBlank() || !value.startsWith("usr_")) {
+        if (value.isBlank() || !value.startsWith(PREFIX)) {
             throw new IllegalArgumentException("User id cannot be blank and shout start with prefix usr_");
         }
     }
