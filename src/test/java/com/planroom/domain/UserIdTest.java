@@ -9,7 +9,7 @@ class UserIdTest {
 
     @Test
     public void test_userId_is_null() {
-        assertThrows(IllegalArgumentException.class, () -> new UserId(null));
+        assertThrows(NullPointerException.class, () -> new UserId(null));
     }
 
     @Test

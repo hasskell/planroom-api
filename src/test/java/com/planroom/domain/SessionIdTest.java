@@ -10,7 +10,7 @@ class SessionIdTest {
 
     @Test
     public void test_session_id_null(){
-        assertThrows(IllegalArgumentException.class, () -> new SessionId(null));
+        assertThrows(NullPointerException.class, () -> new SessionId(null));
     }
 
     @Test
