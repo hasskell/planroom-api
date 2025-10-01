@@ -5,6 +5,7 @@ import com.planroom.app.service.DisplayNameService;
 import com.planroom.app.service.IdService;
 import com.planroom.spi.SessionStore;
 import com.planroom.spi.Token;
+import com.planroom.spi.impl.InMemorySessionStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +24,7 @@ public class SessionConfiguration {
 
     @Bean
     public SessionStore sessionStore(){
-        return new SessionStore();
+        return new InMemorySessionStore();
     }
 
     @Bean

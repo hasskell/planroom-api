@@ -1,4 +1,4 @@
 package com.planroom.api.session.dto;
 
-public class CreateGuestSessionRequest {
+public record CreateGuestSessionRequest(String displayName) {
 }
