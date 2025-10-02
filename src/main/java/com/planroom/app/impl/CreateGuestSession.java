@@ -1,9 +1,11 @@
 package com.planroom.app.impl;
 
 import com.planroom.app.CreateSession;
+import com.planroom.app.model.SessionProfile;
 import com.planroom.app.service.DisplayNameService;
 import com.planroom.app.service.IdService;
 import com.planroom.domain.SessionId;
+import com.planroom.domain.UserId;
 import com.planroom.spi.SessionStore;
 import com.planroom.spi.Token;
 import lombok.NonNull;
@@ -23,6 +25,8 @@ public class CreateGuestSession implements CreateSession {
     private IdService idService;
     @NonNull
     private DisplayNameService displayNameService;
+
+    public record Result(SessionId sessionId, UserId userId, String jwt, SessionProfile profile, boolean reused) {}
 
     @Override
     public Mono<SessionResult> createSession(String displayName, SessionId existingSessionId, Duration sessionTtl, Duration tokenTtl) {
