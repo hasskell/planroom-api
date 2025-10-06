@@ -34,14 +34,13 @@ public class CreateGuestSession implements CreateSession {
         if (existingSessionId != null) {
             return sessionStore.get(existingSessionId)
                     .flatMap(sessionRecord -> {
-                        var sid = existingSessionId;
                         var user = sessionRecord.userId();
                         var name = displayNameService.normalizeOrDefault(displayName, safeSuffix(user.value()));
                         var profile = SessionProfile.of(name);
 
-                        return sessionStore.update(sid, sessionTtl)
-                                .then(Mono.fromCallable(() -> new SessionResult(sid, user, profile,
-                                        token.issueToken(sid, user, Instant.now().plus(tokenTtl)),
+                        return sessionStore.update(existingSessionId, sessionTtl)
+                                .then(Mono.fromCallable(() -> new SessionResult(existingSessionId, user, profile,
+                                        token.issueToken(existingSessionId, user, Instant.now().plus(tokenTtl)),
                                         true
                                         )));
                     })
